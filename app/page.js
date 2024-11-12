@@ -17,8 +17,14 @@ export default async function Home() {
         justifyContent: "center",
         flexDirection: "column",
         lineHeight: "1.5",
+        textAlign: "center",
       }}
     >
+      <img
+        src="/img-bg-gosohan.jpg"
+        alt=""
+        style={{ width: "60%", borderRadius: "8px" }}
+      />
       <h3>지금 여러분은 승현이의 일기장 사이트를 구경하고 있습니다~</h3>
       <span>
         위에 List 메뉴에는 예시가 있으니 구경해보고 글도 작성해보세요 ^-^

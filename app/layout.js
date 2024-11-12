@@ -30,8 +30,10 @@ export default async function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="nav-bar">
           <div className="title">
-            <img src="/icon-character.png" alt="" />
-            <span>일기장</span>
+            <Link href={"/"}>
+              <img src="/icon-character.png" alt="" />
+              <span>일기장</span>
+            </Link>
           </div>
           <div className="nav-items">
             <Link href={"/list"} className="nav-item">
