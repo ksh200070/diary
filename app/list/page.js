@@ -8,7 +8,7 @@ export default function List() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch(`s/api/content`, {
+    fetch(`/api/content`, {
       method: "GET",
     })
       .then((res) => res.json())
