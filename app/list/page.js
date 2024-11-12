@@ -1,21 +1,24 @@
-import { connectDB } from "/util/database";
+"use client";
+
 import ListItem from "./ListItem";
-import { auth } from "@/auth";
+import { useEffect } from "react";
+import { useState } from "react";
 
-export const dynamic = "force-dynamic";
-// export const revalidate = 60;
+export default function List() {
+  const [posts, setPosts] = useState([]);
 
-export default async function List() {
-  const result = await fetch("http:localhost:3000/api/content", {
-    method: "GET",
-  });
-  const data = await result.json();
-  const session = await auth();
+  useEffect(() => {
+    fetch("http://localhost:3000/api/content", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, [posts.length]);
 
   return (
     <div className="list-bg">
-      {data.map((item, i) => (
-        <ListItem item={item} key={i} session={session} />
+      {posts.map((item, i) => (
+        <ListItem item={item} key={i} />
       ))}
     </div>
   );

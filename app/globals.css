@@ -219,14 +219,7 @@ a {
   color: #41b77b;
 }
 
-/* background-color: rgb(249, 250, 255);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex-grow: 1;
-  overflow: scroll; */
-
+/* detail page  */
 .detail-page {
   padding: 0 40px 20px 40px;
   background-color: rgb(238, 238, 238);
@@ -234,8 +227,13 @@ a {
   display: flex;
   flex-direction: column;
   height: 10%;
+  gap: 8px;
 }
-
+.detail-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .detail-page .detail-content {
   flex-grow: 1;
   overflow: scroll;
@@ -249,4 +247,79 @@ a {
   line-height: 1.5;
   font-size: 16px;
   font-weight: 400;
+}
+
+/* CommentList 컴포넌트 */
+.comment-list {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #e3e3e3;
+  border-radius: 4px;
+}
+
+.comment-list .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-comment {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+  gap: 8px;
+}
+
+.new-comment input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.new-comment button {
+  width: fit-content;
+  padding: 8px 12px;
+  background-color: #41b77b;
+  border: 1px solid #41b77b;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.new-comment button:hover {
+  background-color: #41b77ab7;
+  color: #fff;
+}
+
+.comments .comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.like-button {
+  background-color: white;
+  border: none;
+  padding: 4px 8px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.like-button:hover {
+  border: 1px solid rgb(255, 99, 99);
+  background-color: rgb(255, 218, 218);
+  color: black;
+}
+
+.selected {
+  background-color: rgb(255, 99, 99);
+  color: white;
+  border: none;
 }
