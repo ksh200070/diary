@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function ListItem({ item, session }) {
+export default function ListItem({ item }) {
   return (
     <div className="list-item">
       <div className="list-item-title">
