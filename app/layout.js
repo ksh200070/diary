@@ -40,6 +40,9 @@ export default async function RootLayout({ children }) {
           </div>
           {!!session ? (
             <div className="nav-buttons">
+              <Link href={"/write"}>
+                <img src="/icon-write.png" alt="" className="icon-write" />
+              </Link>
               <span>{session.user.name}</span>
               <LogoutBtn></LogoutBtn>
             </div>

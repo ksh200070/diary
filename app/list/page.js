@@ -1,25 +1,12 @@
-"use client";
-
+import { auth } from "@/auth";
 import ListItem from "./ListItem";
-import { useEffect } from "react";
-import { useState } from "react";
 
-export default function List() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetch(`/api/content`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-  }, [posts.length]);
+export default async function List() {
+  const session = await auth();
 
   return (
     <div className="list-bg">
-      {posts.map((item, i) => (
-        <ListItem item={item} key={i} />
-      ))}
+      <ListItem userEmail={session && session.user.email} />
     </div>
   );
 }

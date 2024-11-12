@@ -18,7 +18,7 @@ export default async function Detail(props) {
       <div className="header">
         <h2>{result.title}</h2>
         <div className="feedback">
-          <LikeBtn postId={postId} userId={session.user._id} />
+          <LikeBtn postId={postId} userId={session && session.user._id} />
         </div>
       </div>
       <div className="detail-content">
