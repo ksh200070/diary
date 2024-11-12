@@ -57,7 +57,8 @@ export async function POST(request) {
     } catch (error) {
       return Response.error(error);
     }
-    return Response.redirect("http:localhost:3000/list", 301);
+
+    return Response.redirect(`${process.env.NEXTAUTH_URL}/list`, 301);
   } else {
     // edit original content
     try {
@@ -75,6 +76,6 @@ export async function POST(request) {
       return Response.error(error);
     }
 
-    return Response.redirect("http:localhost:3000/list", 301);
+    return Response.redirect(`${process.env.NEXTAUTH_URL}/list`, 301);
   }
 }
