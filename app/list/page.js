@@ -8,7 +8,7 @@ export default function List() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXTAUTH_URL}/api/content`, {
+    fetch(`s/api/content`, {
       method: "GET",
     })
       .then((res) => res.json())

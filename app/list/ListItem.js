@@ -18,7 +18,7 @@ export default function ListItem({ item }) {
           {/* {session.user.email === item.author ? ( */}
           <div
             onClick={(e) => {
-              fetch(`${process.env.NEXTAUTH_URL}/api/content/${item._id}`, {
+              fetch(`/api/content/${item._id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())

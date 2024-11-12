@@ -12,7 +12,7 @@ export default function CommentList({ session, postId }) {
   }, [comments.length]);
 
   const getComments = () => {
-    fetch(`${process.env.NEXTAUTH_URL}/api/comment?postId=${postId}`, {
+    fetch(`/api/comment?postId=${postId}`, {
       method: "GET",
     })
       .then((res) => res.json())
