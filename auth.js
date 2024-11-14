@@ -20,12 +20,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials) {
         let db = (await connectDB).db("forum");
-        console.log(credentials.email);
+
         let user = await db
           .collection("user_cred")
           .findOne({ email: credentials.email });
         if (!user) {
-          console.log("해당 이메일은 없음");
+          console.log("해당 이메일의 가입유저가 없습니다.");
           return null;
         }
         const pwcheck = await bcrypt.compare(
@@ -34,7 +34,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
 
         if (!pwcheck) {
-          console.log("비번틀림");
+          console.log("비밀번호를 잘못 입력하였습니다.");
           return null;
         }
         return user;
@@ -48,8 +48,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 
   callbacks: {
-    //4. jwt 만들 때 실행되는 코드
-    //user변수는 DB의 유저정보담겨있고 token.user에 뭐 저장하면 jwt에 들어갑니다.
     jwt: async ({ token, user }) => {
       console.log(user);
       if (user) {
@@ -61,7 +59,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return token;
     },
-    //5. 유저 세션이 조회될 때 마다 실행되는 코드
     session: async ({ session, token }) => {
       session.user = token.user;
       return session;

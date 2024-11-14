@@ -19,10 +19,6 @@ export default function Register() {
       setCheckedEmail(true);
     }
   };
-
-  // todo : form required 값 체크하기. 인풋 비어있으면 button disabled 되도록
-  // todo : email 유효성 체크
-  //todo : middleware아마도 사용해야할듯. 회원가입 완료 후, 자동 리다이렉트되어야하기때문. 지금은 form태그로 응답을 어디에서 처리해야할지 감이 안잠힙
   return (
     <div className="form-container">
       <h2>회원가입</h2>
@@ -56,3 +52,7 @@ export default function Register() {
     </div>
   );
 }
+
+// todo : form required 값 체크하기. 인풋 비어있으면 button disabled 되도록
+// todo : email 유효성 체크
+//todo : middleware아마도 사용해야할듯. 회원가입 완료 후, 자동 리다이렉트되어야하기때문. 지금은 form태그로 응답을 어디에서 처리해야할지 감이 안잠힙

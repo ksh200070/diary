@@ -7,7 +7,7 @@ export async function POST(request, { params }) {
 
   try {
     const isExist = await db.collection("user_cred").findOne({ email: email });
-    console.log(isExist, email);
+
     if (isExist) {
       return NextResponse.json(
         { error: "해당 이메일로 가입한 유저가 존재합니다." },
@@ -19,6 +19,5 @@ export async function POST(request, { params }) {
     return Response.error(error);
   }
 
-  // return Response.redirect("http:localhost:3000/register", 301);
   return NextResponse.json({});
 }
