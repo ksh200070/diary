@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
           <div className="title">
             <Link href={"/"}>
               <img src="/icon-character.png" alt="" />
-              <span>일기장</span>
+              <span>블로그</span>
             </Link>
           </div>
           <div className="nav-items">
@@ -42,11 +42,18 @@ export default async function RootLayout({ children }) {
           </div>
           {!!session ? (
             <div className="nav-buttons">
-              <Link href={"/write"}>
+              <Link href={"/write"} className="flex">
                 <img src="/icon-write.png" alt="" className="icon-write" />
+                {/* (글쓰기) */}
               </Link>
-              <span>{session.user.name}</span>
-              <LogoutBtn></LogoutBtn>
+              <Link href={"/mypage"} className="flex">
+                <img src="/icon-profile.png" alt="" className="icon-write" />
+                {/* <span>({session.user.name}님)</span> */}
+                <div className="nav-button white">
+                  {session.user.name}의 블로그
+                </div>
+              </Link>
+              {/* <LogoutBtn></LogoutBtn> */}
             </div>
           ) : (
             <div className="nav-buttons">

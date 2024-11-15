@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
 
 export default function ListItem({ userEmail }) {
   const [posts, setPosts] = useState([]);
+  const path = usePathname();
 
   useEffect(() => {
-    fetch(`/api/content`, {
+    fetch(`/api/content?isMypage=${path === "/mypage"}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -24,6 +26,7 @@ export default function ListItem({ userEmail }) {
         // <ListItem item={item} key={i} />
 
         <div className="list-item" key={i}>
+          <span className="author">{item.user.name}</span>
           <div className="list-item-title">
             <Link prefetch={false} href={`/detail/${item._id}`}>
               <h4>{item.title}</h4>
@@ -68,7 +71,9 @@ export default function ListItem({ userEmail }) {
               )}
             </div>
           </div>
-          <p>{item.content}</p>
+          <Link prefetch={false} href={`/detail/${item._id}`}>
+            <p>{item.content}</p>
+          </Link>
         </div>
       ))}
     </>

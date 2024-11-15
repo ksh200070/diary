@@ -23,28 +23,39 @@ export default function CommentList({ session, postId }) {
       });
   };
 
+  const clickSendBtn = () => {
+    fetch("/api/comment", {
+      method: "POST",
+      body: JSON.stringify({
+        comment: comment,
+        postId: postId,
+        author: session.user,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setComments([data, ...comments]);
+        setComment(() => "");
+      });
+  };
+
+  const enterHandler = (event) => {
+    if (event.key === "Enter") {
+      clickSendBtn();
+    }
+  };
+
   return (
     <div className="comment-list">
       <div className="header">
         <h3 className="title">댓글 목록</h3>
         <div className="new-comment">
-          <input onChange={(e) => setComment(e.target.value)} />
-          <button
-            onClick={() => {
-              fetch("/api/comment", {
-                method: "POST",
-                body: JSON.stringify({
-                  comment: comment,
-                  postId: postId,
-                  author: session.user,
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => setComments([...comments, data]));
-            }}
-          >
-            댓글전송
-          </button>
+          <input
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            onKeyDown={(event) => enterHandler(event)}
+          />
+          <button onClick={() => clickSendBtn()}>댓글전송</button>
         </div>
       </div>
       <div className="comments">
