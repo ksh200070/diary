@@ -13,6 +13,8 @@ body {
   height: 100vh;
   box-sizing: border-box;
   font-family: "Pretendard";
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* place-items: center; */
 }
 
 * {
@@ -60,7 +62,7 @@ body {
 }
 
 .list-item {
-  max-height: 120px;
+  max-height: 140px;
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
@@ -69,6 +71,12 @@ body {
   transition: all 1s;
   display: flex;
   flex-direction: column;
+  gap: 4px;
+}
+
+.list-item .author {
+  font-size: 14px;
+  color: #555555;
 }
 
 .list-item h4 {
@@ -226,6 +234,10 @@ a {
   background-color: #ffffff;
   color: #41b77b;
 }
+.nav-button.white {
+  background-color: white;
+  color: #41b77b;
+}
 
 /* detail page  */
 .detail-page {
@@ -265,6 +277,9 @@ a {
   box-sizing: border-box;
   background-color: #e3e3e3;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .comment-list .header {
@@ -277,7 +292,6 @@ a {
   width: 60%;
   display: flex;
   align-items: center;
-  /* justify-content: flex-end; */
   gap: 8px;
 }
 
@@ -305,10 +319,25 @@ a {
   color: #fff;
 }
 
+.comments {
+  overflow: scroll;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .comments .comment {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.comments .comment .writer {
+  width: 100px;
+  min-width: fit-content;
+}
+.comments .comment .text {
+  flex-grow: 1;
 }
 
 .like-button {
@@ -330,4 +359,43 @@ a {
   background-color: rgb(255, 99, 99);
   color: white;
   border: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.list-bg.my-page {
+  background-color: #e5e5e5b7;
+}
+
+.list-bg.my-page .nav-buttons {
+  justify-content: end;
+  margin-top: 8px;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 50px;
+  aspect-ratio: 1;
+  --_c: radial-gradient(farthest-side, #25b09b 92%, #0000);
+  background: var(--_c) top, var(--_c) left, var(--_c) right, var(--_c) bottom;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s7 1s infinite;
+}
+@keyframes s7 {
+  to {
+    transform: rotate(0.5turn);
+  }
 }

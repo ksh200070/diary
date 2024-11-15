@@ -25,7 +25,7 @@ export async function GET(request, { params }) {
       .collection("comment")
       .find({ postId: postId })
       .toArray();
-
+    result.sort((a, b) => b.createdDate - a.createdDate);
     return NextResponse.json(result);
   } catch (error) {
     console.log(error);

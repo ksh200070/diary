@@ -2,11 +2,16 @@ import { ObjectId } from "mongodb";
 import { connectDB } from "/util/database";
 import { auth } from "@/auth";
 
-export async function GET() {
-  try {
-    const db = (await connectDB).db("forum");
-    let result = await db.collection("post").find().toArray();
+export async function GET(request, { params }) {
+  const db = (await connectDB).db("forum");
+  const session = await auth();
+  const isMypage = JSON.parse(request.nextUrl.searchParams.get("isMypage"));
 
+  try {
+    const result = await db
+      .collection("post")
+      .find(isMypage ? { "user._id": new ObjectId(session.user._id) } : {})
+      .toArray();
     return Response.json(result);
   } catch (error) {
     console.log(error);
@@ -15,8 +20,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  const db = (await connectDB).db("forum");
   const session = await auth();
-  console.log(session.user.email);
 
   // Check writer's email
   if (!session) {
@@ -25,8 +30,6 @@ export async function POST(request) {
       { status: 404 }
     );
   }
-
-  const db = (await connectDB).db("forum");
 
   const formData = await request.formData();
   const title = formData.get("title");
