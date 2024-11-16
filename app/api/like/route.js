@@ -32,8 +32,6 @@ export async function POST(request, { params }) {
   const likedId = request.nextUrl.searchParams.get("likedId");
   const isLiked = request.nextUrl.searchParams.get("isLiked");
 
-  console.log("likedid:", likedId);
-  console.log("isliked:", isLiked);
   try {
     const item = await db
       .collection("like")

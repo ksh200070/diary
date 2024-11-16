@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
+import Loader from "./loader";
 
 export default function CommentList({ session, postId }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     getComments();
   }, [comments.length]);
 
   const getComments = () => {
+    setIsFetching(true);
     fetch(`/api/comment?postId=${postId}`, {
       method: "GET",
     })
@@ -19,6 +22,7 @@ export default function CommentList({ session, postId }) {
       .then((data) => {
         if (data) {
           setComments(data);
+          setIsFetching(false);
         }
       });
   };
@@ -59,11 +63,25 @@ export default function CommentList({ session, postId }) {
         </div>
       </div>
       <div className="comments">
-        {comments.length
-          ? comments.map((comment) => (
-              <Comment key={comment._id} comment={comment}></Comment>
-            ))
-          : "로딩중"}
+        {isFetching ? (
+          <Loader size="sm"></Loader>
+        ) : comments.length ? (
+          comments.map((comment) => (
+            <Comment key={comment._id} comment={comment}></Comment>
+          ))
+        ) : (
+          <div
+            className="flex"
+            style={{
+              width: "100%",
+              height: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            새로운 댓글을 추가해보세요!
+          </div>
+        )}
       </div>
     </div>
   );
