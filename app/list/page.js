@@ -6,7 +6,7 @@ export default async function List() {
 
   return (
     <div className="list-bg">
-      <ListItem userEmail={session && session.user.email} />
+      <ListItem userId={session && session.user._id} />
     </div>
   );
 }

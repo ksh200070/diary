@@ -30,7 +30,7 @@ export default async function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="nav-bar">
           <div className="title">
-            <Link href={"/"}>
+            <Link href={"/"} className="flex">
               <img src="/icon-character.png" alt="" />
               <span>블로그</span>
             </Link>
@@ -49,9 +49,9 @@ export default async function RootLayout({ children }) {
               <Link href={"/mypage"} className="flex">
                 <img src="/icon-profile.png" alt="" className="icon-write" />
                 {/* <span>({session.user.name}님)</span> */}
-                <div className="nav-button white">
+                {/* <div className="nav-button white">
                   {session.user.name}의 블로그
-                </div>
+                </div> */}
               </Link>
               {/* <LogoutBtn></LogoutBtn> */}
             </div>

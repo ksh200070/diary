@@ -12,7 +12,7 @@ export default function LikeBtn({ postId, userId }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         setCount(data.count);
         setLikedId(data.likedId);
         setIsLiked(data.isLiked);

@@ -4,6 +4,41 @@
     format("woff");
   font-style: normal;
 }
+
+html {
+  font-size: 62.5%;
+}
+
+/* Mobile view size*/
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  .comment-list {
+    width: 100%;
+    min-height: 18rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    background-color: #e3e3e3;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+  }
+  .comment-list .new-commnet button {
+    font-size: 1.2rem;
+  }
+}
+
+/* Web view size */
+@media (min-width: 769px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
 body {
   margin: 0;
   display: flex;
@@ -13,19 +48,43 @@ body {
   height: 100vh;
   box-sizing: border-box;
   font-family: "Pretendard";
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   /* place-items: center; */
+  font-size: 1.6rem;
 }
 
 * {
   /* box-sizing: border-box; */
 }
 
+/* 기본 page */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  background-color: blanchedalmond;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+.home-page .icon-doodle-jump {
+  width: 6rem;
+}
+.home-page .welcome {
+}
+.home-page .descriptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-bar {
-  padding: 20px;
+  padding: 2rem;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   justify-content: space-between;
 }
 
@@ -33,62 +92,63 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-size: 28px;
+  gap: 0.8rem;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  margin-right: 20px;
+  margin-right: 2rem;
 }
 
 .nav-bar .title img {
-  width: 30px;
+  width: 3rem;
 }
 
 .nav-bar .nav-items {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 400;
   color: #333333;
   flex-grow: 1;
 }
 
 .list-bg {
-  background-color: rgb(249, 250, 255);
-  padding: 16px;
+  /* background-color: rgb(249, 250, 255); */
+  background-color: rgba(255, 235, 205, 0.519);
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
   flex-grow: 1;
   overflow: scroll;
 }
 
 .list-item {
-  max-height: 140px;
+  max-height: 14rem;
   background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 1rem;
+  padding: 2rem;
   box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
   opacity: 1;
   transition: all 1s;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
 }
 
 .list-item .author {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #555555;
 }
 
 .list-item h4 {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 800;
   margin: 0;
 }
 
 .list-item p {
   color: grey;
-  margin: 5px 0px;
-  margin-top: 12px;
+  margin: 0.5rem 0rem;
+  margin-top: 1.2rem;
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -101,7 +161,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .list-item .list-item-title a h4 {
@@ -119,37 +179,38 @@ body {
 }
 
 .date {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: grey;
 }
 
 .icon-pencil,
 .icon-trash,
 .icon-write {
-  width: 28px;
-  margin-right: 4px;
+  width: 2.8rem;
+  margin-right: 0.4rem;
   cursor: pointer;
 }
 
 .form-container {
-  width: 400px;
+  box-sizing: border-box;
+  max-width: 100rem;
   height: auto;
-  margin: 20px;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
   flex-grow: 1;
 }
 
 .form-container .header {
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .form-container form input,
 textarea {
   width: 100%;
-  margin-bottom: 8px;
-  padding: 8px;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
   box-sizing: border-box;
 }
 
@@ -157,7 +218,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 0.4rem;
 }
 
 .form-container .check-email input {
@@ -165,18 +226,18 @@ textarea {
   flex-grow: 1;
 }
 .form-container .check-email button {
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
 }
 
 .form-container form textarea {
-  height: 300px;
+  height: 30rem;
   resize: none;
 }
 
 .form-container button {
   width: fit-content;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.4rem;
   border: 0;
   background-color: rgb(215, 215, 215);
   cursor: pointer;
@@ -191,7 +252,7 @@ a {
   /* position: fixed;
   bottom: 0; */
   width: 100%;
-  height: 60px;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,17 +278,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.8rem;
 }
 .nav-buttons .nav-button {
   width: fit-content;
-  padding: 4px 8px;
+  padding: 0.4rem 0.8rem;
   background-color: #41b77b;
-  border: 1px solid #41b77b;
+  border: 0.1rem solid #41b77b;
   color: white;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   cursor: pointer;
 }
 .nav-buttons .nav-button:hover {
@@ -241,45 +302,51 @@ a {
 
 /* detail page  */
 .detail-page {
-  padding: 0 40px 20px 40px;
+  padding: 2rem 3rem 2rem 3rem;
   background-color: rgb(238, 238, 238);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   height: 10%;
-  gap: 8px;
+  gap: 0.8rem;
 }
-.detail-page .header {
+.detail-page .author {
+  padding: 0 0.8rem;
+  font-size: 1.4rem;
+}
+.detail-page > .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 1.6rem;
+  padding: 0 0.6rem;
 }
 .detail-page .detail-content {
   flex-grow: 1;
   overflow: scroll;
   white-space: break-spaces;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: white;
 }
 
 .detail-page .detail-content div {
-  padding: 20px;
+  padding: 2rem;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
 /* CommentList 컴포넌트 */
 .comment-list {
   width: 100%;
-  height: 200px;
-  padding: 20px;
+  height: 20rem;
+  padding: 2rem 2rem 1rem 2rem;
   box-sizing: border-box;
   background-color: #e3e3e3;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .comment-list .header {
@@ -289,29 +356,30 @@ a {
 }
 
 .new-comment {
-  width: 60%;
+  min-width: 60%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .new-comment input {
   flex-grow: 1;
-  padding: 8px;
+  padding: 0.8rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   outline: none;
 }
 
 .new-comment button {
   width: fit-content;
-  padding: 8px 12px;
+  padding: 0.8rem 1.2rem;
   background-color: #41b77b;
-  border: 1px solid #41b77b;
+  border: 0.1rem solid #41b77b;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   color: white;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .new-comment button:hover {
@@ -324,33 +392,41 @@ a {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0.4rem;
 }
 
 .comments .comment {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.8rem;
 }
 .comments .comment .writer {
-  width: 100px;
+  width: 10rem;
+  max-width: 5rem;
   min-width: fit-content;
+  color: #515151;
 }
 .comments .comment .text {
   flex-grow: 1;
+}
+.comments .comment .date-info {
+  color: #9d9d9d;
+  font-size: 1.2rem;
 }
 
 .like-button {
   background-color: white;
   border: none;
-  padding: 4px 8px;
-  border: 1px solid grey;
-  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  border: 0.1rem solid grey;
+  border-radius: 0.4rem;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .like-button:hover {
-  border: 1px solid rgb(255, 99, 99);
+  border: 0.1rem solid rgb(255, 99, 99);
   background-color: rgb(255, 218, 218);
   color: black;
 }
@@ -364,19 +440,11 @@ a {
 .flex {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2px;
+  /* justify-content: center; */
+  gap: 0.4rem;
 }
 
-.list-bg.my-page {
-  background-color: #e5e5e5b7;
-}
-
-.list-bg.my-page .nav-buttons {
-  justify-content: end;
-  margin-top: 8px;
-}
-
+/* Loader component */
 .loading-container {
   width: 100%;
   height: 100%;
@@ -385,12 +453,17 @@ a {
   justify-content: center;
 }
 
+.loading-container.sm .spinner {
+  width: 2rem;
+  background-size: 0.6rem 0.6rem;
+}
+
 .spinner {
-  width: 50px;
+  width: 5rem;
   aspect-ratio: 1;
   --_c: radial-gradient(farthest-side, #25b09b 92%, #0000);
   background: var(--_c) top, var(--_c) left, var(--_c) right, var(--_c) bottom;
-  background-size: 12px 12px;
+  background-size: 1.2rem 1.2rem;
   background-repeat: no-repeat;
   animation: s7 1s infinite;
 }
@@ -398,4 +471,30 @@ a {
   to {
     transform: rotate(0.5turn);
   }
+}
+
+/* my page view */
+.list-bg.my-page {
+  background-color: rgba(255, 235, 205, 0.519);
+  padding: 2.2rem;
+}
+.my-page .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+.my-page .header .title {
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+.my-page .header .nav-buttons .nav-button {
+  font-size: 1.2rem;
+}
+.my-page .icon-doodle-jump {
+  width: 6rem;
+}
+.list-bg.my-page .nav-buttons {
+  justify-content: end;
+  margin-top: 0.8rem;
 }

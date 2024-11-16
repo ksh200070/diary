@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
   try {
     const result = await db
       .collection("post")
-      .find(isMypage ? { "user._id": new ObjectId(session.user._id) } : {})
+      .find(isMypage ? { "user.id": session.user._id } : {})
       .toArray();
     return Response.json(result);
   } catch (error) {
@@ -53,7 +53,11 @@ export async function POST(request) {
       const updateInfo = {
         title: title,
         content: content,
-        author: session.user.email,
+        user: {
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.name,
+        },
         createdDate: new Date(),
       };
       let result = await db.collection("post").insertOne(updateInfo);
