@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import LogoutBtn from "@/component/LogoutBtn";
 import SignupBtn from "@/component/SignupBtn";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -65,6 +66,7 @@ export default async function RootLayout({ children }) {
         </div>
         {children}
         <Analytics />
+        <SpeedInsights />
         <div className="footer">
           <span>Icons by&nbsp;</span>
           <a href="https://icons8.kr/">Icons8</a>
