@@ -15,8 +15,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     Credentials({
       credentials: {
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
+        email: {
+          label: "이메일",
+          type: "text",
+          placeholder: "example@naver.com",
+        },
+        password: { label: "비밀번호", type: "password" },
       },
       async authorize(credentials) {
         let db = (await connectDB).db("forum");
@@ -62,6 +66,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user = token.user;
       return session;
     },
+  },
+  pages: {
+    // signIn: "/auth/signIn",
   },
 
   adapter: MongoDBAdapter(connectDB),

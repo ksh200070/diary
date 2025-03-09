@@ -39,17 +39,17 @@ export default function ListItem({ userId }) {
   };
 
   return (
-    <>
+    <section className="post-list">
       {posts.length
         ? posts.map((item, i) => (
-            <div className="list-item" key={i}>
+            <div className="post-item" key={i}>
               <div className="flex author" style={{ gap: "8px" }}>
                 <span style={{ color: "#919191" }}>
                   {formatDate(item.createdDate)}
                 </span>
                 <span>{item.user?.name}</span>
               </div>
-              <div className="list-item-title">
+              <div className="post-item-title">
                 <Link prefetch={false} href={`/detail/${item._id}`}>
                   <h4>{item.title}</h4>
                 </Link>
@@ -100,6 +100,8 @@ export default function ListItem({ userId }) {
             </div>
           ))
         : posts.length !== 0 && <Loader></Loader>}
-    </>
+
+      <div className="footer"></div>
+    </section>
   );
 }
