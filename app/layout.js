@@ -3,7 +3,6 @@ import "./globals.css";
 import Link from "next/link";
 import LoginBtn from "../component/LoginBtn";
 import { auth } from "@/auth";
-import LogoutBtn from "@/component/LogoutBtn";
 import SignupBtn from "@/component/SignupBtn";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -34,6 +33,12 @@ export default async function RootLayout({ children }) {
           <div className="top-navigation-inner">
             <h1>블로그</h1>
             <div className="top-navigation-main">
+              <Link href={"/guide"} className="nav-item">
+                가이드
+              </Link>
+              <Link href={"/question"} className="nav-item">
+                주제모음
+              </Link>
               <Link href={"/list"} className="nav-item">
                 List
               </Link>

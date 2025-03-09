@@ -43,7 +43,8 @@ html {
   .top-navigation-inner {
     min-width: 80rem;
   }
-  .post-item {
+  .post-item,
+  .question-list {
     width: 80rem;
   }
 }
@@ -52,8 +53,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  justify-content: space-between;
   height: 100vh;
   box-sizing: border-box;
   font-family: "Pretendard";
@@ -123,10 +122,39 @@ body {
   overflow: scroll;
 }
 
+.guide-main {
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding-top: 4rem;
+}
+.guide-main h1 {
+  font-size: 2rem;
+}
+
+.question-list {
+  margin: 0 auto;
+  padding: 4.8rem 1.6rem 0;
+}
+.question-list h1 {
+  font-size: 2rem;
+}
+.question-list .question-item {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 0.4rem;
+  padding: 2rem 4rem;
+  border: 1px solid #eee;
+}
+.question-list .question-content {
+  margin-bottom: 1.2rem;
+}
+
 .post-list {
   margin: 0 auto;
 }
-
 .post-item {
   background-color: #fff;
   opacity: 1;
@@ -290,13 +318,14 @@ a {
 
 /* detail page  */
 .detail-page {
-  padding: 2rem 3rem 2rem 3rem;
-  background-color: rgb(238, 238, 238);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   height: 10%;
   gap: 0.8rem;
+  margin: 0 auto;
+  width: 80rem;
+  padding-top: 4rem;
 }
 .detail-page .author {
   padding: 0 0.8rem;
@@ -311,17 +340,18 @@ a {
 }
 .detail-page .detail-content {
   flex-grow: 1;
-  overflow: scroll;
   white-space: break-spaces;
-  border-radius: 0.8rem;
-  background-color: white;
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
 }
 
 .detail-page .detail-content div {
   padding: 2rem;
-  line-height: 1.5;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
 }
 
 /* CommentList 컴포넌트 */
