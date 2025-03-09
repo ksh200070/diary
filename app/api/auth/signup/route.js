@@ -21,7 +21,7 @@ export async function POST(request, { params }) {
         .collection("user_cred")
         .insertOne({ name: name, email: email, password: hashPassword });
 
-      return NextResponse.json({ email: email });
+      return Response.redirect(`${process.env.NEXTAUTH_URL}/list`, 301);
     } catch (error) {
       return Response.error(error);
     }

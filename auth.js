@@ -9,8 +9,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
   providers: [
     GitHub({
-      clientId: "Ov23liiN9tDq7W9nlp4I",
-      clientSecret: "84ed242f9cf4dcb31ea87d4b0e60357e268eef98",
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
 
     Credentials({

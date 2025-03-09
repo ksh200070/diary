@@ -33,7 +33,6 @@ export default async function RootLayout({ children }) {
         <div className="nav-bar">
           <div className="title">
             <Link href={"/"} className="flex">
-              <img src="/icon-character.png" alt="" />
               <span>블로그</span>
             </Link>
           </div>
@@ -67,10 +66,6 @@ export default async function RootLayout({ children }) {
         {children}
         <Analytics />
         <SpeedInsights />
-        <div className="footer">
-          <span>Icons by&nbsp;</span>
-          <a href="https://icons8.kr/">Icons8</a>
-        </div>
       </body>
     </html>
   );

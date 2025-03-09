@@ -68,9 +68,6 @@ body {
   flex-grow: 1;
   line-height: 1.5;
 }
-.home-page .icon-doodle-jump {
-  width: 6rem;
-}
 .home-page .welcome {
 }
 .home-page .descriptions {
@@ -246,23 +243,6 @@ textarea {
 a {
   text-decoration: none;
   color: rgb(51, 51, 51);
-}
-
-.footer {
-  /* position: fixed;
-  bottom: 0; */
-  width: 100%;
-  height: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(42, 42, 42);
-  color: #f3f3f3;
-}
-
-.footer a {
-  text-decoration: underline;
-  color: #d6d6d6;
 }
 
 .modal-container {
@@ -490,9 +470,6 @@ a {
 }
 .my-page .header .nav-buttons .nav-button {
   font-size: 1.2rem;
-}
-.my-page .icon-doodle-jump {
-  width: 6rem;
 }
 .list-bg.my-page .nav-buttons {
   justify-content: end;
