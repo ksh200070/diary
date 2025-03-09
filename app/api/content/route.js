@@ -54,7 +54,7 @@ export async function POST(request) {
         title: title,
         content: content,
         user: {
-          id: session.user.id,
+          id: session.user._id,
           email: session.user.email,
           name: session.user.name,
         },

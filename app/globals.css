@@ -10,7 +10,7 @@ html {
 }
 
 /* Mobile view size*/
-@media (max-width: 768px) {
+@media (max-width: 890px) {
   html {
     font-size: 50%;
   }
@@ -30,12 +30,22 @@ html {
   .comment-list .new-commnet button {
     font-size: 1.2rem;
   }
+  .top-navigation-inner {
+    width: 100%;
+  }
 }
 
 /* Web view size */
-@media (min-width: 769px) {
+@media (min-width: 891px) {
   html {
     font-size: 62.5%;
+  }
+  .top-navigation-inner {
+    min-width: 80rem;
+  }
+  .post-item,
+  .question-list {
+    width: 80rem;
   }
 }
 
@@ -43,18 +53,17 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  justify-content: space-between;
   height: 100vh;
   box-sizing: border-box;
   font-family: "Pretendard";
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   /* place-items: center; */
   font-size: 1.6rem;
+  padding-top: 9.4rem;
 }
 
 * {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 /* 기본 page */
@@ -68,9 +77,6 @@ body {
   flex-grow: 1;
   line-height: 1.5;
 }
-.home-page .icon-doodle-jump {
-  width: 6rem;
-}
 .home-page .welcome {
 }
 .home-page .descriptions {
@@ -80,39 +86,34 @@ body {
   justify-content: center;
 }
 
-.nav-bar {
+.top-navigation {
   padding: 2rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  height: 9.4rem;
 }
-
-.nav-bar .title {
+.top-navigation-inner {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-right: 2rem;
+  margin: 0 auto;
+  justify-content: space-between;
 }
-
-.nav-bar .title img {
-  width: 3rem;
-}
-
-.nav-bar .nav-items {
+.top-navigation-main {
   font-size: 2rem;
   font-weight: 400;
   color: #333333;
-  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .list-bg {
-  /* background-color: rgb(249, 250, 255); */
-  background-color: rgba(255, 235, 205, 0.519);
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
@@ -121,31 +122,63 @@ body {
   overflow: scroll;
 }
 
-.list-item {
-  max-height: 14rem;
+.guide-main {
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding-top: 4rem;
+}
+.guide-main h1 {
+  font-size: 2rem;
+}
+
+.question-list {
+  margin: 0 auto;
+  padding: 4.8rem 1.6rem 0;
+}
+.question-list h1 {
+  font-size: 2rem;
+}
+.question-list .question-item {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 0.4rem;
+  padding: 2rem 4rem;
+  border: 1px solid #eee;
+}
+.question-list .question-content {
+  margin-bottom: 1.2rem;
+}
+
+.post-list {
+  margin: 0 auto;
+}
+.post-item {
   background-color: #fff;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
   opacity: 1;
   transition: all 1s;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  padding-bottom: 4.8rem;
+  border-bottom: 1px solid #eee;
+  margin-top: 4.8rem;
 }
 
-.list-item .author {
+.post-item .author {
   font-size: 1.4rem;
   color: #555555;
 }
 
-.list-item h4 {
+.post-item h4 {
   font-size: 2rem;
   font-weight: 800;
   margin: 0;
 }
 
-.list-item p {
+.post-item p {
   color: grey;
   margin: 0.5rem 0rem;
   margin-top: 1.2rem;
@@ -157,14 +190,14 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.list-item .list-item-title {
+.post-item .post-item-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
 
-.list-item .list-item-title a h4 {
+.post-item .post-item-title a h4 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -172,7 +205,7 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.list-item .list-item-title .button-pannel {
+.post-item .post-item-title .button-pannel {
   display: flex;
   opacity: 1;
   transition: all 1s;
@@ -248,23 +281,6 @@ a {
   color: rgb(51, 51, 51);
 }
 
-.footer {
-  /* position: fixed;
-  bottom: 0; */
-  width: 100%;
-  height: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(42, 42, 42);
-  color: #f3f3f3;
-}
-
-.footer a {
-  text-decoration: underline;
-  color: #d6d6d6;
-}
-
 .modal-container {
   width: 100%;
   max-height: 40%;
@@ -302,13 +318,14 @@ a {
 
 /* detail page  */
 .detail-page {
-  padding: 2rem 3rem 2rem 3rem;
-  background-color: rgb(238, 238, 238);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   height: 10%;
   gap: 0.8rem;
+  margin: 0 auto;
+  width: 80rem;
+  padding-top: 4rem;
 }
 .detail-page .author {
   padding: 0 0.8rem;
@@ -323,17 +340,18 @@ a {
 }
 .detail-page .detail-content {
   flex-grow: 1;
-  overflow: scroll;
   white-space: break-spaces;
-  border-radius: 0.8rem;
-  background-color: white;
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
 }
 
 .detail-page .detail-content div {
   padding: 2rem;
-  line-height: 1.5;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 300;
+  line-height: 1.6;
+  word-break: keep-all;
 }
 
 /* CommentList 컴포넌트 */
@@ -491,10 +509,13 @@ a {
 .my-page .header .nav-buttons .nav-button {
   font-size: 1.2rem;
 }
-.my-page .icon-doodle-jump {
-  width: 6rem;
-}
 .list-bg.my-page .nav-buttons {
   justify-content: end;
   margin-top: 0.8rem;
+}
+
+/* footer */
+.footer {
+  margin: 10rem auto 0;
+  padding: 24px 0;
 }

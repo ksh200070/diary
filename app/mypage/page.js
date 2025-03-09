@@ -9,12 +9,6 @@ export default async function Mypage() {
     <>
       <div className="list-bg my-page">
         <div className="header">
-          <img
-            src="/icon-doodle-jump.png"
-            alt=""
-            className="icon-doodle-jump"
-          />
-
           <h2 className="title">{session.user.name}님의 글</h2>
           <div className="nav-buttons">
             <LogoutBtn />

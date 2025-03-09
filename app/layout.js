@@ -3,7 +3,6 @@ import "./globals.css";
 import Link from "next/link";
 import LoginBtn from "../component/LoginBtn";
 import { auth } from "@/auth";
-import LogoutBtn from "@/component/LogoutBtn";
 import SignupBtn from "@/component/SignupBtn";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -30,47 +29,44 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="nav-bar">
-          <div className="title">
-            <Link href={"/"} className="flex">
-              <img src="/icon-character.png" alt="" />
-              <span>블로그</span>
-            </Link>
-          </div>
-          <div className="nav-items">
-            <Link href={"/list"} className="nav-item">
-              List
-            </Link>
-          </div>
-          {!!session ? (
-            <div className="nav-buttons">
-              <Link href={"/write"} className="flex">
-                <img src="/icon-write.png" alt="" className="icon-write" />
-                {/* (글쓰기) */}
+        <div className="top-navigation">
+          <div className="top-navigation-inner">
+            <h1>블로그</h1>
+            <div className="top-navigation-main">
+              <Link href={"/guide"} className="nav-item">
+                가이드
               </Link>
-              <Link href={"/mypage"} className="flex">
-                <img src="/icon-profile.png" alt="" className="icon-write" />
-                {/* <span>({session.user.name}님)</span> */}
-                {/* <div className="nav-button white">
-                  {session.user.name}의 블로그
-                </div> */}
+              <Link href={"/question"} className="nav-item">
+                주제모음
               </Link>
-              {/* <LogoutBtn></LogoutBtn> */}
+              <Link href={"/list"} className="nav-item">
+                List
+              </Link>
+              {!!session ? (
+                <div className="nav-buttons">
+                  <Link href={"/write"} className="flex">
+                    <img src="/icon-write.png" alt="" className="icon-write" />
+                  </Link>
+                  <Link href={"/mypage"} className="flex">
+                    <img
+                      src="/icon-profile.png"
+                      alt=""
+                      className="icon-write"
+                    />
+                  </Link>
+                </div>
+              ) : (
+                <div className="nav-buttons">
+                  <LoginBtn></LoginBtn>
+                  <SignupBtn></SignupBtn>
+                </div>
+              )}{" "}
             </div>
-          ) : (
-            <div className="nav-buttons">
-              <LoginBtn></LoginBtn>
-              <SignupBtn></SignupBtn>
-            </div>
-          )}
+          </div>
         </div>
         {children}
         <Analytics />
         <SpeedInsights />
-        <div className="footer">
-          <span>Icons by&nbsp;</span>
-          <a href="https://icons8.kr/">Icons8</a>
-        </div>
       </body>
     </html>
   );

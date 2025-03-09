@@ -9,14 +9,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
   providers: [
     GitHub({
-      clientId: "Ov23liiN9tDq7W9nlp4I",
-      clientSecret: "84ed242f9cf4dcb31ea87d4b0e60357e268eef98",
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
 
     Credentials({
       credentials: {
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
+        email: {
+          label: "이메일",
+          type: "text",
+          placeholder: "example@naver.com",
+        },
+        password: { label: "비밀번호", type: "password" },
       },
       async authorize(credentials) {
         let db = (await connectDB).db("forum");
@@ -62,6 +66,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user = token.user;
       return session;
     },
+  },
+  pages: {
+    // signIn: "/auth/signIn",
   },
 
   adapter: MongoDBAdapter(connectDB),
