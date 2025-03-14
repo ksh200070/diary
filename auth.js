@@ -30,7 +30,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           .findOne({ email: credentials.email });
         if (!user) {
           console.log("해당 이메일의 가입유저가 없습니다.");
-          return null;
+          return;
         }
         const pwcheck = await bcrypt.compare(
           credentials.password,
@@ -68,7 +68,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
   pages: {
-    // signIn: "/auth/signIn",
+    signIn: "/auth/login",
   },
 
   adapter: MongoDBAdapter(connectDB),
