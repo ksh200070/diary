@@ -19,36 +19,72 @@ export default function Register() {
       setCheckedEmail(true);
     }
   };
+
   return (
-    <div className="form-container">
-      <h2>회원가입</h2>
+    <div className="page-container">
       <form action="/api/auth/signup" method="POST">
-        <input name="name" type="text" placeholder="이름" />
-        <div className="check-email">
-          <input
-            name="email"
-            type="text"
-            placeholder="이메일"
-            defaultValue={email}
-            onChange={(e) => setEmail(e.target.value)}
-            readOnly={checkedEmail}
-          />
-          {!checkedEmail ? (
-            <button type="button" onClick={checkEmail}>
-              중복확인
+        <div className="login-box">
+          <h1>회원가입</h1>
+          <div className="login-inputs">
+            <section className="login-id">
+              <div className="input-box">
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="이름을 입력해주세요"
+                />
+                <img src="/icon-user.png" className="input-icon" alt="" />
+              </div>
+            </section>
+
+            <section className="login-id">
+              <div className="check-email">
+                <div className="input-box">
+                  <input
+                    name="email"
+                    type="text"
+                    placeholder="이메일"
+                    defaultValue={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    readOnly={checkedEmail}
+                  />
+                  <img src="/icon-email.png" className="input-icon" alt="" />
+                  {!checkedEmail ? (
+                    <button
+                      className="input-check-btn"
+                      type="button"
+                      onClick={checkEmail}
+                    >
+                      중복확인
+                    </button>
+                  ) : (
+                    <button
+                      className="input-check-btn"
+                      type="button"
+                      disabled={true}
+                    >
+                      확인완료
+                    </button>
+                  )}
+                </div>
+              </div>
+            </section>
+            <section>
+              <div className="input-box">
+                <input name="password" type="text" placeholder="비밀번호" />
+                <img src="/icon-password.png" className="input-icon" alt="" />
+              </div>
+            </section>
+          </div>
+
+          <div className="login-actions">
+            <button type="submit" disabled={!checkedEmail}>
+              요청
             </button>
-          ) : (
-            <button type="button" disabled={true}>
-              확인완료
-            </button>
-          )}
+            <span>{checkedEmail}</span>
+          </div>
         </div>
-        <input name="password" type="text" placeholder="비밀번호" />
-        <button type="submit" disabled={!checkedEmail}>
-          요청
-        </button>
       </form>
-      <span>{checkedEmail}</span>
     </div>
   );
 }

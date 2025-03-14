@@ -66,6 +66,28 @@ body {
   box-sizing: border-box;
 }
 
+button {
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  height: 48px;
+  width: 100%;
+}
+button:enabled {
+  font-weight: 600;
+  background-color: #25b09b;
+  color: #fff;
+}
+button:disabled {
+  border: 1px solid #e0e0e0;
+  background-color: #eee;
+}
+
+input::placeholder {
+  color: #ababab;
+}
+
 /* 기본 page */
 .home-page {
   display: flex;
@@ -298,7 +320,8 @@ a {
 }
 .nav-buttons .nav-button {
   width: fit-content;
-  padding: 0.4rem 0.8rem;
+  height: fit-content;
+  padding: 0.6rem 0.8rem;
   background-color: #41b77b;
   border: 0.1rem solid #41b77b;
   color: white;
@@ -518,4 +541,81 @@ a {
 .footer {
   margin: 10rem auto 0;
   padding: 24px 0;
+}
+
+/* login page */
+.page-container {
+  width: 100%;
+}
+.login-box {
+  /* width, height 고정값 */
+  width: 380px;
+  height: 480px;
+  border-radius: 1.5rem;
+  border: 1px solid #d7d7d7;
+  margin: auto;
+  position: fixed;
+  top: calc(50% - 240px);
+  left: calc(50% - 190px);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+}
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.login-inputs section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-box .input-check-btn {
+  position: absolute;
+  right: 8px;
+  width: fit-content;
+  height: fit-content;
+  padding: 8px;
+  font-size: 12px;
+}
+.login-box h1 {
+  font-size: 28px;
+}
+.input-box .input-icon {
+  position: absolute;
+  left: 16px;
+  color: #838383;
+  font-size: 12px;
+  width: 20px;
+}
+.login-box section input {
+  height: 46px;
+  padding: 8px 68px 8px 44px;
+  font-size: 1.6rem;
+  width: 100%;
+  border: 1px solid #eee;
+}
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+}
+.login-actions .signup {
+  font-size: 14px;
+  font-weight: 600;
+  color: #25b09b;
+  cursor: pointer;
 }

@@ -39,11 +39,11 @@ export default async function RootLayout({ children }) {
               <Link href={"/question"} className="nav-item">
                 주제모음
               </Link>
-              <Link href={"/list"} className="nav-item">
-                List
-              </Link>
               {!!session ? (
                 <div className="nav-buttons">
+                  <Link href={"/list"} className="nav-item">
+                    List
+                  </Link>
                   <Link href={"/write"} className="flex">
                     <img src="/icon-write.png" alt="" className="icon-write" />
                   </Link>
