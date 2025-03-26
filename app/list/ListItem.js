@@ -50,7 +50,7 @@ export default function ListItem({ userId }) {
                 <span>{item.user?.name}</span>
               </div>
               <div className="post-item-title">
-                <Link prefetch={false} href={`/detail/${item._id}`}>
+                <Link href={`/detail/${item._id}`}>
                   <h4>{item.title}</h4>
                 </Link>
                 <div className="button-pannel">
@@ -94,7 +94,7 @@ export default function ListItem({ userId }) {
                   )}
                 </div>
               </div>
-              <Link prefetch={false} href={`/detail/${item._id}`}>
+              <Link href={`/detail/${item._id}`}>
                 <p>{item.content}</p>
               </Link>
             </div>
