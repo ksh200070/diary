@@ -13,7 +13,7 @@ export default function Login() {
       email: id,
       password: pw,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "/list",
     });
   };
 

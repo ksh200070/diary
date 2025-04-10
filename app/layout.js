@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="top-navigation">
           <div className="top-navigation-inner">
-            <h1>블로그</h1>
+            <h1>Diary</h1>
             <div className="top-navigation-main">
               <Link href={"/guide"} className="nav-item">
                 가이드
