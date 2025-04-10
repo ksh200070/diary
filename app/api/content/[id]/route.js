@@ -20,7 +20,7 @@ export async function DELETE(request, { params }) {
       // 삭제 권한 : 관리자 혹은 본인이 작성한 글인 경우
       if (
         session.user.role === "Admin" ||
-        findItem.author === session.user.email
+        findItem.user.email === session.user.email
       ) {
         let result = await db
           .collection("post")

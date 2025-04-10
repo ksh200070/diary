@@ -1,9 +1,9 @@
 import { connectDB } from "/util/database";
 import { ObjectId } from "mongodb";
-import Comment from "../../../component/Comment";
+import Comment from "@/component/Comment";
 import { auth } from "@/auth";
 import CommentList from "@/component/CommentList";
-import LikeBtn from "../../../component/LikeBtn";
+import LikeBtn from "@/component/LikeBtn";
 
 export default async function Detail(props) {
   const db = (await connectDB).db("forum");

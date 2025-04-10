@@ -11,6 +11,7 @@ export async function GET(request, { params }) {
     const result = await db
       .collection("post")
       .find(isMypage ? { "user.id": session.user._id } : {})
+      .sort({ createdDate: -1 })
       .toArray();
     return Response.json(result);
   } catch (error) {

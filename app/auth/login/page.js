@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 export default function Login() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = async () => {
     const result = await signIn("credentials", {
@@ -25,7 +26,7 @@ export default function Login() {
             <div className="input-box">
               <input
                 name="id"
-                type="text"
+                type={"text"}
                 defaultValue={id}
                 onChange={(e) => setId(e.target.value)}
                 placeholder="이메일을 입력해주세요"
@@ -37,11 +38,26 @@ export default function Login() {
             <div className="input-box">
               <input
                 name="pw"
-                type="text"
+                type={showPw ? "text" : "password"}
                 defaultValue={pw}
                 onChange={(e) => setPw(e.target.value)}
                 placeholder="비밀번호를 입력해주세요"
               />
+              <div>
+                {showPw ? (
+                  <img
+                    src="/icon-pw-hide.png"
+                    className="pw-icon"
+                    onClick={() => setShowPw((prev) => !prev)}
+                  />
+                ) : (
+                  <img
+                    src="/icon-pw-hide.png"
+                    className="pw-icon"
+                    onClick={() => setShowPw((prev) => !prev)}
+                  />
+                )}
+              </div>
               <img src="/icon-password.png" className="input-icon" alt="" />
             </div>
           </section>
