@@ -77,9 +77,10 @@ export default function CommentList({ session, postId }) {
               height: "100%",
               alignItems: "center",
               justifyContent: "center",
+              opacity: "0.7",
             }}
           >
-            새로운 댓글을 추가해보세요!
+            첫 마음이 담기길 기다리고 있어요.
           </div>
         )}
       </div>

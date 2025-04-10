@@ -24,7 +24,8 @@ export default async function Detail(props) {
         return target.toLocaleDateString("ko-KR");
       } else if (diffHours < 1) {
         const diffMinutes = Math.floor(diffTime / (1000 * 60));
-        return `${diffMinutes}분 전`;
+
+        return !diffMinutes ? "방금 전" : `${diffMinutes}분 전`;
       } else {
         return `${diffHours}시간 전`;
       }

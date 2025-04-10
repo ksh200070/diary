@@ -6,7 +6,7 @@ export default function Write() {
   const [title, setTitle] = useState("");
 
   return (
-    <>
+    <div className="page-container">
       <div className="form-container">
         <h2>글 작성</h2>
         <form action="api/content" method="POST">
@@ -23,6 +23,6 @@ export default function Write() {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
