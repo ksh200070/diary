@@ -32,6 +32,7 @@ export default async function RootLayout({ children }) {
         <div className="top-navigation">
           <div className="top-navigation-inner">
             <h1>Diary</h1>
+
             <div className="top-navigation-main">
               <Link href={"/guide"} className="nav-item">
                 가이드
@@ -60,7 +61,7 @@ export default async function RootLayout({ children }) {
                   <LoginBtn></LoginBtn>
                   <SignupBtn></SignupBtn>
                 </div>
-              )}{" "}
+              )}
             </div>
           </div>
         </div>

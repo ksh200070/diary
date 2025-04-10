@@ -29,6 +29,9 @@ html {
   .top-navigation-inner {
     width: 100%;
   }
+  .view-container {
+    width: 100%;
+  }
 }
 
 /* Web view size */
@@ -46,6 +49,14 @@ html {
   .post-item,
   .question-list {
     width: 80rem;
+  }
+
+  .view-container {
+    min-width: 80rem;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    padding-right: 16px;
   }
 }
 
@@ -98,8 +109,6 @@ input::placeholder {
 input,
 textarea {
   border: 2px solid #adc7c3;
-  /** outline-color 속성을 추가하면 
-    	focus될 때 테두리 색상을 지정할 수 있다.**/
   outline-color: #25b09bbf;
 }
 
@@ -113,8 +122,6 @@ textarea {
   background-color: blanchedalmond;
   flex-grow: 1;
   line-height: 1.5;
-}
-.home-page .welcome {
 }
 .home-page .descriptions {
   display: flex;
@@ -139,7 +146,48 @@ textarea {
 .top-navigation-inner {
   display: flex;
   margin: 0 auto;
+  align-items: center;
   justify-content: space-between;
+  gap: 24px;
+}
+.search-container {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: end;
+  z-index: 2;
+}
+.search-area {
+  min-width: 180px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 auto;
+  position: fixed;
+  background-color: #fff;
+}
+.search-area .icon-search {
+  width: 20px;
+  margin-left: 12px;
+  z-index: 2;
+}
+.search-area input {
+  border: 1px solid #eee;
+  border-radius: 100px;
+  padding: 6px 12px;
+  padding-left: 40px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  max-width: 18rem;
+}
+.search-area input:hover {
+  border: 1px solid #cacaca;
+}
+.search-area input:focus {
+  border: 2px solid #adc7c3;
 }
 .top-navigation-main {
   font-size: 2rem;
@@ -189,10 +237,18 @@ textarea {
   margin-bottom: 1.2rem;
 }
 
+.view-container .header-functions {
+  display: flex;
+  align-items: center;
+}
 .post-list {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .post-item {
+  min-width: 80rem;
+  margin: 0 auto;
   background-color: #fff;
   opacity: 1;
   transition: all 1s;
@@ -571,23 +627,26 @@ a {
 /* my page view */
 .list-bg.my-page {
   padding: 2.2rem;
-}
-.my-page .header {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
 }
-.my-page .header .title {
+.my-pag .title {
   margin-top: 1rem;
   margin-bottom: 0.8rem;
 }
-.my-page .header .nav-buttons .nav-button {
-  font-size: 1.2rem;
+.my-page .nav-buttons .nav-button {
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
 }
 .list-bg.my-page .nav-buttons {
   justify-content: end;
-  margin-top: 0.8rem;
+  /* margin-top: 0.8rem; */
+}
+.my-page .header-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* footer */
@@ -681,4 +740,10 @@ a {
   font-weight: 600;
   color: #25b09b;
   cursor: pointer;
+}
+
+/* 공통 */
+.empty-message {
+  position: absolute;
+  top: 50%;
 }

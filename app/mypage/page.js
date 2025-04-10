@@ -8,13 +8,14 @@ export default async function Mypage() {
   return (
     <>
       <div className="list-bg my-page">
-        <div className="header">
-          <h2 className="title">{session.user.name}님의 글</h2>
-          <div className="nav-buttons">
-            <LogoutBtn />
+        <ListItem userId={session && session.user._id}>
+          <div className="header-area">
+            <h2 className="title">{session.user.name}님의 글</h2>
+            <div className="nav-buttons">
+              <LogoutBtn />
+            </div>
           </div>
-        </div>
-        <ListItem userId={session && session.user._id}></ListItem>
+        </ListItem>
       </div>
     </>
   );
