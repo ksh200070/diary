@@ -6,13 +6,43 @@ export async function GET(request, { params }) {
   const db = (await connectDB).db("forum");
   const session = await auth();
   const isMypage = JSON.parse(request.nextUrl.searchParams.get("isMypage"));
+  const searchKeyword = request.nextUrl.searchParams.get("keyword");
 
   try {
+    let query = {};
+    const sortOption = { createdDate: -1 };
+
+    // 마이페이지인 경우
+    if (isMypage) {
+      query["user.id"] = session.user._id;
+
+      // 마이페이지 + 검색 키워드 있는 경우
+      if (searchKeyword) {
+        query.$or = [
+          { title: { $regex: searchKeyword, $options: "i" } },
+          { content: { $regex: searchKeyword, $options: "i" } },
+        ];
+      }
+    } else {
+      // 전체 게시글 중 검색 키워드 있는 경우
+      if (searchKeyword) {
+        query = {
+          $or: [
+            { $text: { $search: searchKeyword } },
+            { title: { $regex: searchKeyword, $options: "i" } },
+            { content: { $regex: searchKeyword, $options: "i" } },
+          ],
+        };
+      }
+    }
+
+    // 공통 처리
     const result = await db
       .collection("post")
-      .find(isMypage ? { "user.id": session.user._id } : {})
-      .sort({ createdDate: -1 })
+      .find(query)
+      .sort(sortOption)
       .toArray();
+
     return Response.json(result);
   } catch (error) {
     console.log(error);
