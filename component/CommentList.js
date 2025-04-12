@@ -11,7 +11,7 @@ export default function CommentList({ session, postId }) {
 
   useEffect(() => {
     getComments();
-  }, [comments.length]);
+  }, []);
 
   const getComments = () => {
     setIsFetching(true);

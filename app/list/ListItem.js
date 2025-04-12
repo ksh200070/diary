@@ -4,43 +4,45 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
-import Loader from "../../component/loader";
+import { useForm } from "react-hook-form";
+import Loader from "@/component/loader";
 
 export default function ListItem({ userId, children }) {
-  const [searchText, setSearchText] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const path = usePathname();
 
   useEffect(() => {
-    if (!searchText.length) {
-      setIsFetching(true);
-      fetch(`/api/content?isMypage=${path === "/mypage"}`, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setPosts(data);
-          setIsFetching(false);
-        });
-    }
-  }, [posts.length]);
+    setIsFetching(true);
+    fetch(`/api/content?isMypage=${path === "/mypage"}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+        setIsFetching(false);
+      });
+  }, []);
 
-  const enterHandler = (event) => {
-    if (event.key === "Enter") {
-      setIsFetching(true);
-      fetch(
-        `/api/content?isMypage=${path === "/mypage"}&keyword=${searchText}`,
-        {
-          method: "GET",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setPosts(data);
-          setIsFetching(false);
-        });
-    }
+  const onSubmit = (data) => {
+    setIsFetching(true);
+    fetch(
+      `/api/content?isMypage=${path === "/mypage"}&keyword=${data.searchText}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+        setIsFetching(false);
+      });
   };
 
   const formatDate = (date) => {
@@ -88,20 +90,19 @@ export default function ListItem({ userId, children }) {
       ) : (
         <div className="view-container">
           <div className="search-container">
-            <div className="search-area">
+            <form onSubmit={handleSubmit(onSubmit)} className="search-area">
               <input
                 type="text"
                 placeholder="검색어 입력"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                onKeyDown={enterHandler}
+                defaultValue={""}
+                {...register("searchText")}
               />
               <img
                 src="/icon-search.png"
                 className="icon icon-search"
                 alt="search-icon"
               />
-            </div>
+            </form>
           </div>
 
           {children}
@@ -116,7 +117,7 @@ export default function ListItem({ userId, children }) {
                     <span>{item.user?.name}</span>
                   </div>
                   <div className="post-item-title">
-                    <Link href={`/detail/${item._id}`}>
+                    <Link href={`/detail/${item._id}`} prefetch={true}>
                       <h4>{item.title}</h4>
                     </Link>
                     <div className="button-pannel">
@@ -140,7 +141,7 @@ export default function ListItem({ userId, children }) {
                       )}
                     </div>
                   </div>
-                  <Link href={`/detail/${item._id}`}>
+                  <Link href={`/detail/${item._id}`} prefetch={true}>
                     <p>{item.content}</p>
                   </Link>
                 </div>
