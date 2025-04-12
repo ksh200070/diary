@@ -1,4 +1,4 @@
-# 블로그 서비스 diary (개인 프로젝트)
+# Diary: 블로그 서비스
 
 | **배포 URL : https://diary-theta-orcin.vercel.app/list** |
 | :------: |
