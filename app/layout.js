@@ -34,15 +34,15 @@ export default async function RootLayout({ children }) {
             <h1>Diary</h1>
 
             <div className="top-navigation-main">
-              <Link href={"/guide"} className="nav-item">
+              <Link href="/guide" className="nav-item" prefetch={true}>
                 가이드
               </Link>
-              <Link href={"/question"} className="nav-item">
+              <Link href={"/question"} className="nav-item" prefetch={true}>
                 주제모음
               </Link>
               {!!session ? (
                 <div className="nav-buttons">
-                  <Link href={"/list"} className="nav-item">
+                  <Link href={"/list"} className="nav-item" prefetch={true}>
                     List
                   </Link>
                   <Link href={"/write"} className="flex">
