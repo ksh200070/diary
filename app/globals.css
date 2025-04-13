@@ -32,6 +32,15 @@ html {
   .view-container {
     width: 100%;
   }
+  .post-list .post-item {
+    min-width: 100%;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .form-container form {
+    width: 80%;
+  }
 }
 
 /* Web view size */
@@ -46,9 +55,13 @@ html {
     min-width: 80rem;
     margin: 0 auto;
   }
+  .form-container form {
+    min-width: 80rem;
+  }
   .post-item,
   .question-list {
-    width: 80rem;
+    min-width: 80rem;
+    max-width: 80rem;
   }
 
   .view-container {
@@ -56,7 +69,7 @@ html {
     margin: 0 auto;
     height: 100%;
     position: relative;
-    padding-right: 16px;
+    padding: 0 16px;
   }
 }
 
@@ -113,17 +126,17 @@ textarea {
 }
 
 /* 기본 page */
-.home-page {
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  background-color: blanchedalmond;
+  background-color: #eee;
   flex-grow: 1;
   line-height: 1.5;
 }
-.home-page .descriptions {
+.home-container .descriptions {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +170,7 @@ textarea {
   width: 100%;
   height: 40px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   z-index: 2;
 }
 .search-area {
@@ -208,6 +221,7 @@ textarea {
   gap: 1.2rem;
   flex-grow: 1;
   overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .guide-main {
@@ -250,7 +264,7 @@ textarea {
   align-items: center;
 }
 .post-item {
-  min-width: 80rem;
+  /* min-width: 80rem; */
   margin: 0 auto;
   background-color: #fff;
   opacity: 1;
@@ -323,12 +337,6 @@ textarea {
 .icon-write {
   margin: 2px;
 }
-.icon-container {
-  border-radius: 50%;
-  background-color: #eee;
-  padding: 2px;
-}
-
 .page-container {
   background-color: #f6f6f6;
   width: 100%;
@@ -337,7 +345,7 @@ textarea {
   align-items: center;
 }
 .form-container {
-  min-width: 80rem;
+  /* min-width: 80rem; */
   margin: auto;
 }
 .form-container {
@@ -360,7 +368,7 @@ textarea {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-width: 80rem;
+
   height: 100%;
 }
 .form-container form input,
@@ -423,6 +431,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav-item {
+  margin-right: auto;
 }
 
 .nav-buttons {
@@ -550,6 +562,7 @@ a {
 
 .comments {
   overflow: scroll;
+  scroll-behavior: smooth;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -652,7 +665,7 @@ a {
   padding: 0.4rem 0.6rem;
 }
 .list-bg.my-page .nav-buttons {
-  justify-content: end;
+  justify-content: flex-end;
   /* margin-top: 0.8rem; */
 }
 .my-page .header-area {
@@ -758,4 +771,26 @@ a {
 .empty-message {
   position: absolute;
   top: 50%;
+}
+
+.icon-container {
+  border-radius: 50%;
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  /* background-color: #fff; */
+  width: 32px;
+  height: 32px;
+  /* box-shadow: 2px 1px 5px #dddddd; */
+}
+.icon.icon-scroll-top {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  position: fixed;
+}
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
